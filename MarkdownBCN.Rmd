@@ -1,19 +1,105 @@
 Title
 ========================================================
-#ejemplo Arnau
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
 
-When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r echo=FALSE }
+library(PackageBCN2)
+library(ggplot2)
+library(ggmap)
+
+```
 
 ```{r echo=FALSE}
-library(PackageBCN)
-print_hour()
+bajadaprecios <- getbajadaprecios()
+wifibcn <- getPuntsWifi()
+elecbcn <- getelec_auto_data()
+estudiosbcn <- getestudios()
+
 ```
 
-You can also embed plots, for example:
+##PRACTICA DE DATA MINING ALEJANDRO GUASCH
 
-la data d'avui és `r print_hour()`
+Esta practica trata de responder ciertas preguntas relacionadas con la ciudad de Barcelona y sus barrios:
 
-```{r fig.width=7, fig.height=6}
-plot(cars)
+Pregunta 1) Trata de responder a la bajada de precios de las viviendas desde 2008 de cada uno de los barrios:
+
+```{r}
+bajadaprecios[,c("Barris","diferencia")]
 ```
+
+Se trata de valores relativos al 2008 y comprovamos que el barrios que menos a bajado es:
+
+Diagonal Mar i el Front Marítim del Poblenou
+
+y el que mas ha bajado es:
+
+Ciutat Meridiana
+
+Pregunta 2) Trata de responder el porcentaje de personas con estudios universitarios del total por barrios:
+
+```{r}
+estudiosbcn[,c("Barris","con_estudios_universitarios")]
+```
+
+Pregunta 3) Representación gráfica de nro. personas con estudios univ. por barrios
+
+```{r}
+qplot(Estudis.universitaris...CFGS.grau.superior, Barris, data = estudiosbcn)
+```
+
+No nos llevamos sorpresas cuando los dos barrios con mayor nro. de personas con estudios universitarios son:
+
+Nova Example Esquerra
+St. Gervasi-Galvany
+
+Pregunta 4) Trata de responder el porcentaje de personas sin estudios del total por barrios:
+
+```{r}
+estudiosbcn[,c("Barris","Sense..estudis")]
+```
+
+Pregunta 5) Representación gráfica de nro. personas sin estudios por barrios
+
+```{r}
+qplot(Sense..estudis, Barris, data = estudiosbcn)
+```
+
+No nos llevamos sorpresas cuando los dos barrios con mayor nro. de personas son estudios son:
+
+Vallbona
+Verdun
+
+Pregunta 6) Personas que han ejercido el derecho al voto por barrios
+
+```{r}
+elecbcn[,c("Barris","porcentaje_han_votado")]
+```
+
+Pregunta 7) En las elecciones generales en Barcelona, que porcentaje a votado partidos de derechas:
+
+```{r}
+elecbcn[,c("Barris","porcentaje_votos_derechas")]
+```
+
+Pregunta 8) En las elecciones generales en Barcelona, que porcentaje a votado partidos de izquierdas:
+
+```{r}
+elecbcn[,c("Barris","porcentaje_votos_izquierdas")]
+```
+
+Pregunta 9) En las elecciones generales en Barcelona, que porcentaje a votado partidos catalanistas:
+
+```{r}
+elecbcn[,c("Barris","porcentaje_votos_catalanistas")]
+```
+
+Pregunta 10) Mapa que muestra las estaciones Wifi libres del ayuntamiento de BCN:
+
+```{r}
+pinto_bcn<-get_map(location="Barcelona", source="google", maptype="terrain", zoom=13)
+ggmap(pinto_bcn) + geom_point(aes(LONGITUD, LATITUD), data = wifibcn, alpha = .5, color="darkred", size = 3)
+```
+
+
+
+
