@@ -27,13 +27,15 @@ Pregunta 1) Trata de responder a la bajada de precios de las viviendas desde 200
 bajadaprecios[,c("Barris","diferencia")]
 ```
 
+```{r echo=FALSE}
+head_barris <- head(bajadaprecios, n = 2)
+tail_barris <- tail(bajadaprecios, n = 2)
+```
 Se trata de valores relativos al 2008 y comprovamos que el barrios que menos a bajado es:
 
-Diagonal Mar i el Front Marítim del Poblenou
+__`r tail_barris$Barris[1]`__ con una diferencia de `r tail_barris$diferencia[1]`.
 
-y el que mas ha bajado es:
-
-Ciutat Meridiana
+y el que mas ha bajado es `r head_barris$Barris[1]` con una diferencia de `r head_barris$diferencia[1]`.
 
 Pregunta 2) Trata de responder el porcentaje de personas con estudios universitarios del total por barrios:
 
@@ -65,6 +67,7 @@ qplot(Sense..estudis, Barris, data = estudiosbcn)
 ```
 
 No nos llevamos sorpresas cuando los dos barrios con mayor nro. de personas son estudios son:
+
 
 Vallbona
 Verdun
