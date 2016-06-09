@@ -31,11 +31,11 @@ bajadaprecios[,c("Barris","diferencia")]
 head_barris <- head(bajadaprecios, n = 2)
 tail_barris <- tail(bajadaprecios, n = 2)
 ```
-Se trata de valores relativos al 2008 y comprovamos que el barrios que menos a bajado es:
+Se trata de valores relativos al 2008 y comprovamos que los barrios que menos a bajado son:
 
 __`r tail_barris$Barris[1]`__ con una diferencia de `r tail_barris$diferencia[1]`.
 
-y el que mas ha bajado es `r head_barris$Barris[1]` con una diferencia de `r head_barris$diferencia[1]`.
+y el que mas han bajado es __`r head_barris$Barris[1]`__ con una diferencia de `r head_barris$diferencia[1]`.
 
 Pregunta 2) Trata de responder el porcentaje de personas con estudios universitarios del total por barrios:
 
