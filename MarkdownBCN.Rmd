@@ -60,6 +60,14 @@ St. Gervasi-Galvany
 estudiosbcn[,c("Barris","Sense..estudis")]
 ```
 
+```{r echo=FALSE}
+head_estudios_barris <- head(estudiosbcn, n = 2)
+tail_estudios_barris <- tail(estudiosbcn, n = 2)
+```
+Comprobamos que los barrios con menos estudios son:
+
+__`r head_estudios_barris$Barris[1]`__ y __`r head_estudios_barris$Barris[2]`__
+
 **Pregunta 5) Representación gráfica de nro. personas sin estudios por barrios**
 
 ```{r}
