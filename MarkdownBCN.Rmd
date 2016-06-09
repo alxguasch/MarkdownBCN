@@ -86,6 +86,13 @@ Verdun
 elecbcn[,c("Barris","porcentaje_han_votado")]
 ```
 
+```{r echo=FALSE}
+head_han_votado_barris <- head(elecbcn, n = 2)
+tail_han_votado_barris <- tail(elecbcn, n = 2)
+```
+
+Los barrios que mas han votado son __`r head_han_votado_barris$Barris[1]`__ y __`r head_han_votado_barris$Barris[2]`__
+
 **Pregunta 7) En las elecciones generales en Barcelona, que porcentaje a votado partidos de derechas:**
 
 ```{r}
